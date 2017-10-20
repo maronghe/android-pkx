@@ -57,9 +57,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         chumi_button = (Button)findViewById(R.id.button3);
         chumi_button.setOnClickListener(this);
 
-        tingzhi_button = (Button)findViewById(R.id.button4);
-        tingzhi_button.setOnClickListener(this);
-
         tempTextView = (TextView) findViewById(R.id.temp);
 
         humTextView = (TextView) findViewById(R.id.hum);
@@ -76,16 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 kaideng();break;
             case R.id.button3:
                 chumi();break;
-            case R.id.button4:
-                tingzhi();break;
-
         }
-    }
-
-    private void tingzhi() {
-
-        Thread thread =  new Thread(runnable4);
-        thread.start();
     }
 
     private void chumi() {
@@ -175,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             HttpURLConnection http = null;
             try {
                 //set new url
-                String baseURL2 = "22222222";
+                String baseURL2 = "http://9.112.87.210:8080/IntelligentBucket/openLights";
                 URL url = new URL(baseURL2);
 
                 http = (HttpURLConnection)url.openConnection();
@@ -207,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             HttpURLConnection http = null;
             try {
                 //set new url
-                String baseURL2 = "333333";
+                String baseURL2 = "http://9.112.87.210:8080/IntelligentBucket/openMitong";
                 URL url = new URL(baseURL2);
 
                 http = (HttpURLConnection)url.openConnection();
@@ -223,35 +211,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else
                     System.out.println("error");
 
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    };
-
-    Runnable runnable4 = new Runnable() {
-        @Override
-        public void run() {
-            HttpURLConnection http = null;
-            try {
-                //set new url
-                String baseURL2 = "44444";
-                URL url = new URL(baseURL2);
-
-                http = (HttpURLConnection)url.openConnection();
-
-//                http.setDoInput(true);
-//                http.setDoOutput(true);
-                http.setRequestMethod("GET");
-                http.setConnectTimeout(10*1000);
-                int responseCode = http.getResponseCode();
-                System.out.print("responseCode:"+responseCode);
-                if(responseCode == 200)
-                    System.out.println("success");
-                else
-                    System.out.println("error");
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
